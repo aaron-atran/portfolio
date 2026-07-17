@@ -2,7 +2,7 @@ import Globe from "react-globe.gl";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from '../util.js/ThemeContext.jsx';
 import { Button } from '../util.js/Button.jsx';
-import * as THREE from 'three';
+import { BoxGeometry, MeshLambertMaterial, Mesh } from 'three';
 
 const DARK_GLOBE = '//unpkg.com/three-globe/example/img/earth-night.jpg';
 const LIGHT_GLOBE = '//unpkg.com/three-globe/example/img/earth-day.jpg'
@@ -80,9 +80,9 @@ export const Bento = () => {
                                 backgroundImageOpacity={0.5}
                                 pointsData={myData}
                                 customThreeObject={(d) => {
-                                    const geometry = new THREE.BoxGeometry(d.size, d.size, d.size);
-                                    const material = new THREE.MeshLambertMaterial({ color: d.color });
-                                    const mesh = new THREE.Mesh(geometry, material);
+                                    const geometry = new BoxGeometry(d.size, d.size, d.size);
+                                    const material = new MeshLambertMaterial({ color: d.color });
+                                    const mesh = new Mesh(geometry, material);
                                     
                                     mesh.rotation.x = Math.PI / 2; 
                                     return mesh;
