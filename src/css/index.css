@@ -1,0 +1,118 @@
+@import url('https://fonts.cdnfonts.com/css/general-sans');
+
+@import "tailwindcss";
+
+@source not inline("collapse");
+
+@theme {
+  /* Adding or overriding colors */
+  --color-black-primary: #000;
+  --color-black-100: #010103;
+  --color-black-200: #0E0E10;
+  --color-black-300: #1C1C21;
+  --color-black-500: #3A3A49;
+  --color-black-600: #1A1A1A;
+
+  --color-white-primary: #FFFFFF;
+  --color-white-800: #E4E4E6;
+  --color-white-700: #D6D9E9;
+  --color-white-600: #AFB0B6;
+  --color-white-500: #62646C;
+
+  /* Adding custom fonts */
+  --font-display: "Inter", sans-serif;
+
+  /* Customizing breakpoints (screens) */
+  --breakpoint-3xl: 1920px;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #010103;
+  font-family: 'General Sans', sans-serif;
+}
+
+[data-theme="dark"] .grid-container {
+  @apply w-full h-full border border-black-600 bg-black-200 rounded-lg sm:p-7 p-4 flex flex-col gap-5;
+}
+[data-theme="light"] .grid-container {
+  @apply w-full h-full border border-white-600 bg-white-800 rounded-lg sm:p-7 p-4 flex flex-col gap-5;
+}
+
+[data-theme="dark"] .grid-headtext {
+  @apply text-xl font-semibold mb-2 text-white;
+}
+[data-theme="light"] .grid-headtext {
+  @apply text-xl font-semibold mb-2 text-black;
+}
+
+[data-theme="dark"] .grid-subtext {
+  @apply text-[#afb0b6] text-base;
+}
+[data-theme="light"] .grid-subtext {
+  @apply text-[#000] text-base;
+}
+
+[data-theme="dark"] .btn {
+  @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-black-300  transition-all active:scale-95 text-white mx-auto;
+}
+
+[data-theme="light"] .btn {
+  @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-white-600  transition-all active:scale-95 text-black mx-auto;
+}
+
+.btn-ping {
+  @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
+}
+
+.btn-ping_dot {
+  @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
+}
+
+.waving-hand {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+.arrow-gradient {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.1) 10%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.000025) 50%,
+    rgba(255, 255, 255, 0.025) 100%
+  );
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+  60% {
+    transform: rotate(10deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

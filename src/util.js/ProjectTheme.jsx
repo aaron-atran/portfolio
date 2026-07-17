@@ -11,7 +11,7 @@ import clientImg9 from "../assets/srr-logo.png";
 import clientImg10 from "../assets/srr.png";
 
 import { useContext } from "react";
-import { ThemeContext } from './ThemeContext'
+import { ThemeContext } from './ThemeContext.jsx'
 
 export function ProjectTheme() {
     const { theme } = useContext(ThemeContext);

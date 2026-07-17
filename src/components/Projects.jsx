@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Nav, Row, Col, Container, Tab } from "react-bootstrap";
-import { ProjectCard } from "./ProjectCard";
-import { ScrollTransition } from '../util.js/ScrollTransition';
-import { ProjectTheme } from '../util.js/ProjectTheme';
+import { ProjectCard } from "./ProjectCard.jsx";
+import { ScrollTransition } from '../util.js/ScrollTransition.jsx';
+import { ProjectTheme } from '../util.js/ProjectTheme.jsx';
 
 export const Projects = () => {
     const [animate, setAnimate] = useState(false);

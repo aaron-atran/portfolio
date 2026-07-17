@@ -1,5 +1,5 @@
 import { useRef, useContext, useState, useEffect } from 'react';
-import { ThemeContext } from '../util.js/ThemeContext';
+import { ThemeContext } from '../util.js/ThemeContext.jsx';
 import { Container, Row, Col } from "react-bootstrap";
 import { ScrollTransition } from '../util.js/ScrollTransition';
 import emailjs from '@emailjs/browser';

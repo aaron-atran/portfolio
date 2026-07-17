@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { ScrollTransition } from '../util.js/ScrollTransition';
+import { ScrollTransition } from '../util.js/ScrollTransition.jsx';
 import logo from "../assets/Cute Avatar.png";
 import chat from "../assets/chat-bubble1.png";
 import navIcon1 from '../assets/linkedin.png';

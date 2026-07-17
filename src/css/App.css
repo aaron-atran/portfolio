@@ -96,11 +96,6 @@ a:hover {
   text-decoration: none;
 }
 
-img {
-  width: 100%;
-  height: auto;
-}
-
 button {
   border: 0;
   background-color: transparent;
@@ -421,7 +416,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 #cloud1 {
   top: 0;
-  animation: floatAcrossAnimation1 64s linear infinite;
+  animation: floatAcrossAnimation1 60s linear infinite;
 }
 
 #cloud2 {
@@ -451,9 +446,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-right: 0.08em solid #666;
 }
 
+/*Bento CSS*/
+.bento {
+  padding: 140px 0;
+  width: 80%;
+  margin: auto;
+  position:relative;
+}
+
 /*Skill Section CSS*/
 .skill {
-  padding: 0 0 50px 0;
+
   position: relative;
 }
 
@@ -511,7 +514,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .project p {
-  color: var(project-text);
+  color: var(--project-text);
   font-size: 18px;
   letter-spacing: 0.8px;
   line-height: 1.5em;
@@ -729,13 +732,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /* Light mode background */
 .contact::before {
-  background-image: var(--contact-gradient), url("assets/day-mountain.jpg");
+  background-image: var(--contact-gradient), url("../assets/day-mountain.jpg");
   opacity: 1;
 }
 
 /* Dark mode background */
 .contact::after {
-  background-image: var(--contact-gradient), url("assets/mountains-background.png");
+  background-image: var(--contact-gradient), url("../assets/mountains-background.png");
   opacity: 0;
 }
 
@@ -885,7 +888,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes floatAcrossAnimation1 {
   0% {
-    transform: translateX(-125vw);
+    transform: translateX(-100vw);
   }
   100% {
     transform: translateX(100vw);
@@ -894,10 +897,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 @keyframes floatAcrossAnimation2 {
   0% {
-    transform: translateX(-100vw);
+    transform: translateX(90vw);
   }
   100% {
-    transform: translateX(100vw);
+    transform: translateX(-100vw);
   }
 }
 

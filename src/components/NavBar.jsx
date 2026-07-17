@@ -9,7 +9,7 @@ import darkIcon from '../assets/icons-moon.png';
 import { HashLink } from 'react-router-hash-link';
 import { BrowserRouter as Router } from "react-router-dom";
 import ReactSwitch from "react-switch";
-import { ThemeContext } from '../util.js/ThemeContext'
+import { ThemeContext } from '../util.js/ThemeContext.jsx'
 
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
@@ -45,6 +45,8 @@ export const NavBar = () => {
                     <Nav className="me-auto">
                         <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' :
                          'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
+                        <Nav.Link href="#about" className={activeLink === 'about' ? 'active navbar-link' :
+                         'navbar-link'} onClick={() => onUpdateActiveLink('home')}>About</Nav.Link>
                         <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' :
                          'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
                         <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' :
@@ -54,7 +56,7 @@ export const NavBar = () => {
                         <div className="social-icon">
                             <a href="https://www.linkedin.com/in/aaron-tran-2a3ab01a3/"><img src={navIcon1} alt="" /></a>
                             <a href="https://www.upwork.com/freelancers/~011862acb2c18045eb"><img src={navIcon2} alt="" /></a>
-                            <a href="https://github.com/aaron-transformation"><img src={navIcon3} alt="" /></a>
+                            <a href="https://github.com/aaron-atran"><img src={navIcon3} alt="" /></a>
                         </div>
                         <HashLink to='#connect'>
                             <button><span>Let’s Connect</span></button>
