@@ -3,6 +3,11 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from '../util.js/ThemeContext.jsx';
 import { Button } from '../util.js/Button.jsx';
 import { BoxGeometry, MeshLambertMaterial, Mesh } from 'three';
+import gridImage1 from '../assets/Cute Avatar.png';
+import gridImage2 from '../assets/undraw_idea-to-plan_jnei.svg';
+import gridImage3 from '../assets/undraw_code-thinking_tqs9.svg';
+import gridImage4 from '../assets/undraw_comment-sent_8c4r.svg';
+
 
 const DARK_GLOBE = '//unpkg.com/three-globe/example/img/earth-night.jpg';
 const LIGHT_GLOBE = '//unpkg.com/three-globe/example/img/earth-day.jpg'
@@ -13,8 +18,12 @@ export const Bento = () => {
         { lat: 35.7749, lng: -82.4194, size: 0.5, name: 'Tennessee' },
         { lat: 41.7128, lng: -86.0060, size: 0.7, name: 'Illinois' },
         { lat: 33.7749, lng: -83.4194, size: 0.5,  name: 'Georgia' },
+        { lat: 33.7749, lng: -107.4194, size: 0.5,  name: 'Arizona' },
+        { lat: 39.7749, lng: -102.4194, size: 0.5, name: 'Nebraska' },
+        { lat: 35.7749, lng: -92.4194, size: 0.5, name: 'Missouri' },
+        { lat: 37.7749, lng: -116.4194, size: 0.5,  name: 'California' },
         { lat: 27.7749, lng: -81.4194, size: 0.5,  name: 'Florida' },
-        { lat: 41.5074, lng: 13.1278, size: 0.6, name: 'Italy' }
+        { lat: 30.7749, lng: -95.4194, size: 0.5,  name: 'Texas' }
     ];
 
     const globeRef = useRef();;
@@ -48,7 +57,7 @@ export const Bento = () => {
             <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="src/assets/Cute Avatar.png" alt="grid-1" className="w-full sm:h-69 h-64 object-contain" />
+                        <img src={gridImage1} alt="grid-1" className="w-full sm:h-69 h-64 object-contain" />
                         <div>
                             <p className="grid-headtext">Who I Am</p>
                             <p className="grid-subtext">A highly motivated and creative Web Developer on a 
@@ -59,7 +68,7 @@ export const Bento = () => {
                 </div>
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="src/assets/laptop.svg" alt="grid-2" className="w-full sm:w-69 h-64 object-contain" />
+                        <img src={gridImage2} alt="grid-2" className="w-full sm:w-69 h-64 object-contain" />
                         <div>
                             <p className="grid-headtext">What I Bring</p>
                             <p className="grid-subtext">With a passion for coding and a knack for problem-solving, 
@@ -87,7 +96,6 @@ export const Bento = () => {
                                     mesh.rotation.x = Math.PI / 2; 
                                     return mesh;
                                 }} 
-                                onPointClick={(d) => alert(`I've worked with clients based in ${d.name}`)}
                                 onPointHover={(point) => (point ? handleHoverIn() : handleHoverOut())}
                                 showAtmosphere 
                                 showGraticules 
@@ -103,7 +111,7 @@ export const Bento = () => {
                 </div>
                 <div className="xl:col-span-2 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="src/assets/undraw_code-thinking_tqs9.svg" alt="grid 3" className="w-full sm:h-66.5 h-fit object-contain" />
+                        <img src={gridImage3} alt="grid 3" className="w-full sm:h-66.5 h-fit object-contain" />
                         <div>
                             <p className="grid-headtext">Improving Myself</p>
                             <p className="grid-subtext">When I'm not working, I am actively trying to improve myself, polish my skills, and stay up to date with modern practices.</p>
@@ -112,7 +120,7 @@ export const Bento = () => {
                 </div>
                 <div className="xl:col-span-1 xl:row-span-2">
                     <div className="grid-container">
-                        <img src="src/assets/undraw_comment-sent_8c4r.svg" alt="grid-4" className="w-full md:h-40 sm:h-69 h-fit object-fit" />
+                        <img src={gridImage4} alt="grid-4" className="w-full md:h-40 sm:h-69 h-fit object-fit" />
                         <div className="space-y-2">
                             <p className="grid-headtext text-center">Have any questions? Contact to learn more!</p>
                             <Button name="Let's Connect" isBeam containerClass="w-full mt-10" />

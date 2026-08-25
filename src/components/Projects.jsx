@@ -3,6 +3,7 @@ import { Nav, Row, Col, Container, Tab } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard.jsx";
 import { ScrollTransition } from '../util.js/ScrollTransition.jsx';
 import { ProjectTheme } from '../util.js/ProjectTheme.jsx';
+import '../css/project.css';
 
 export const Projects = () => {
     const [animate, setAnimate] = useState(false);

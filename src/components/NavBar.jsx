@@ -5,6 +5,7 @@ import navIcon2 from '../assets/upwork.png';
 import navIcon3 from '../assets/github-mark-white.png';
 import lightIcon from '../assets/icon-sun.png';
 import darkIcon from '../assets/icons-moon.png';
+import '../css/navbar.css';
 
 import { HashLink } from 'react-router-hash-link';
 import { BrowserRouter as Router } from "react-router-dom";
@@ -14,6 +15,7 @@ import { ThemeContext } from '../util.js/ThemeContext.jsx'
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -36,9 +38,9 @@ export const NavBar = () => {
 
     return (
         <Router>
-        <Navbar expand="lg" className={scrolled ? "scrolled": ""}>
+        <Navbar expand="lg" expanded={expanded} onToggle={(isExpanded) => setExpanded(isExpanded)} className={scrolled ? "scrolled": ""}>
             <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" > 
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className={expanded ? "expanded" : ""} > 
                     <span className="navbar-toggler-icon"></span>
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">

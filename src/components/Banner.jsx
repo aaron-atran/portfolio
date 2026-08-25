@@ -2,53 +2,70 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from '../assets/Cute Avatar.png'
 import cloudImg from '../assets/cloud3.png';
-import { randomWidth } from '../util.js/randomWith';
+import '../css/banner.css';
 
 export const Banner = () => {
     const [num, setNum] = useState(0);
     const [del, setDelete] = useState(false);
-    const toRotate = [ "Frontend", "Backend", "Full-Stack", "Web Developer"];
+    const toRotate = ["Full-Stack", "Web Developer"];
     const [text, setText ] = useState('');
     const [delta, setDelta] = useState(300 - Math.random() * 100);
-    const period = 2000;
+    const period = 800;
+    const [finished, setFinished] = useState(false);
 
     useEffect(() => {
-        let timer = setInterval(() => {
-            time();
-        }, delta)
+        if (finished) return;
 
-        return () => { clearInterval(timer)};
-    }, [text])
+        const timer = setTimeout(() => {
+            type();
+        }, delta);
 
-    const time = () => {
-        let i = num % toRotate.length;
-        let allText = toRotate[i];
-        let newText = del ? allText.substring(0, text.length - 1) : allText.substring(0, text.length + 1);
+        return () => clearTimeout(timer);
+    }, [text, delta, finished]);
+
+    const type = () => {
+        const i = num % toRotate.length;
+        const allText = toRotate[i];
+
+        const newText = del
+            ? allText.substring(0, text.length - 1)
+            : allText.substring(0, text.length + 1);
 
         setText(newText);
 
-        if (del) {
-            setDelta(oldDelta => oldDelta / 2)
-        }
+        // Typing
         if (!del && newText === allText) {
-            setDelete(true);
-            setDelta(period)
-        }
-        else if (del && newText === '') {
-            setDelete(false);
-            setNum(num + 1);
-            setDelta(500);
-        }
-    }
 
-    // useEffect(() => {
-    //     randomWidth(160, 500);
-    // }, []);
+            // Stop on the last item
+            if (num === toRotate.length - 1) {
+                setFinished(true);
+                return;
+            }
+
+            // Start deleting before moving to next word
+            setDelete(true);
+            setDelta(period);
+            return;
+        }
+
+        // Deleting
+        if (del && newText === "") {
+            setDelete(false);
+            setNum((prev) => prev + 1);
+            setDelta(500);
+            return;
+        }
+
+        // Faster deleting speed
+        if (del) {
+             setDelta(50);
+        }
+    };
 
     return (
         <section className="banner" id="home">
             <Container className="banner-container">
-                <Row className="cloud-row" id="cloud1">
+                {/* <Row className="cloud-row" id="cloud1">
                     <Col className="cloud-col">
                         <img className="cloud" src={cloudImg} alt="Cloud"  />
                         <img className="cloud" src={cloudImg} alt="Cloud"  />
@@ -63,7 +80,7 @@ export const Banner = () => {
                         <img className="cloud" src={cloudImg} alt="Cloud"  />
                         <img className="cloud" src={cloudImg} alt="Cloud"  />
                     </Col>
-                </Row>
+                </Row> */}
                 <Row className="align-items-center fade-in">
                     <Col xs={12} md={6} xl={7}>
                         <span className="tagline">Welcome to my Portfolio</span>

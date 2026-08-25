@@ -2,10 +2,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { ScrollTransition } from '../util.js/ScrollTransition.jsx';
 import logo from "../assets/Cute Avatar.png";
-import chat from "../assets/chat-bubble1.png";
 import navIcon1 from '../assets/linkedin.png';
 import navIcon2 from '../assets/upwork.png';
 import navIcon3 from '../assets/github-mark-white.png';
+import '../css/footer.css';
 
 export const Footer = () => {
   const [animate, setAnimate] = useState(false);

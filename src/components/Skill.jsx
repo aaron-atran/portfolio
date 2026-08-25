@@ -1,93 +1,61 @@
-import { Container, Col, Row } from "react-bootstrap";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import logo1 from "../assets/html-logo-colored.png";
-import logo2 from "../assets/css-logo.png";
-import logo3 from "../assets/javascript-logo.png";
-import logo4 from "../assets/react-logo.png";
-import logo5 from "../assets/php.png";
-import logo6 from "../assets/node-js.png";
-import logo7 from "../assets/mysql.png";
-import logo8 from "../assets/python.png";
-import logo9 from "../assets/c-sharp-logo.png";
-import logo10 from "../assets/WordPress.com-Logo.wine.png";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import TechIconCardExperience from "./Models/tech_logos/techIcons.jsx";
+import '../css/skill.css';
 
 export const Skills = () => {
-    const responsive = {
-        superLargeDesktop: {
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5
+    const icons = [
+        { name: "HTML", modelPath: "./html5_logo.glb", scale: 0.8, rotation: [0, -Math.PI / 4, 0], },
+        { name: "CSS", modelPath: "./modern_3d_css_logo.glb", scale: 35, rotation: [0, 0, 0], },
+        { name: "JavaScript", modelPath: "./js-logo.glb", scale: 35, rotation: [0, 0, 0] },
+        { name: "React", modelPath: "./react_logo-transformed.glb", scale: 1, rotation: [0, 0, 0] },
+        { name: "Node.js", modelPath: "./node-transformed.glb", scale: 5, rotation: [0, -Math.PI / 2, 0] }
+    ];
+
+    useGSAP(() => {
+        gsap.fromTo(
+        ".tech-card",
+        {
+            y: 50,
+            opacity: 0,
         },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1
+        {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.inOut",
+            stagger: 0.2,
+            scrollTrigger: {
+            trigger: "#skills",
+            start: "top center",
+            },
         }
-      };
+        );
+    });
 
       return (
-        <section className="skill" id="skills">
-            <Container>
-                <Row>
-                    <Col>
-                        <div className="skill-box fade-in">
-                            <h2>Skills</h2>
-                            <Carousel responsive={responsive} infinite={true} className="skill-slider">
-                                <div className="item">
-                                    <img src={logo1} alt="HTML Logo" />
-                                    <h5>HTML</h5>
+        <section className="flex-center section-padding" id="skills">
+            <div className="w-full h-full md:px-10 px-5">
+                <div>
+                    <h2>My Tech Stack</h2>
+                    <p>but not limited to!</p>
+                </div>
+                <div className="tech-grid">
+                    {icons.map((icon) => (
+                        <div key={icon.name} className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg">
+                            <div className="tech-card-animated-bg" />
+                            <div className="tech-card-content">
+                                <div className="tech-icon-wrapper">
+                                    <TechIconCardExperience icons={icon} />
                                 </div>
-                                <div className="item">
-                                <img src={logo2} alt="CSS Logo" />
-                                    <h5>CSS</h5>
+                                <div className="padding-x w-full">
+                                    <p>{icon.name}</p>
                                 </div>
-                                <div className="item">
-                                <img src={logo3} alt="JavaScript Logo" />
-                                    <h5>JavaScript</h5>
-                                </div>
-                                <div className="item">
-                                <img src={logo4} alt="React Logo" />
-                                    <h5>React</h5>
-                                </div>
-                                <div className="item">
-                                <img src={logo5} alt="PHP Logo" />
-                                    <h5>PHP</h5>
-                                </div>
-                                <div className="item">
-                                <img src={logo6} alt="Node.js Logo" />
-                                    <h5>Node.js</h5>
-                                </div>
-                                <div className="item">
-                                <img src={logo7} alt="MySQL Logo" />
-                                    <h5>MySQL</h5>
-                                </div>
-                                <div className="item">
-                                <img src={logo8} alt="Python Logo" />
-                                    <h5>Python</h5>
-                                </div>
-                                <div className="item">
-                                <img src={logo9} alt="C# Logo" />
-                                    <h5>C#</h5>
-                                </div>
-                                <div className="item">
-                                <img src={logo10} alt="WordPreess Logo" />
-                                    <h5>WordPress</h5>
-                                </div>
-                            </Carousel>
+                            </div>
                         </div>
-                    </Col>
-                </Row>
-            </Container>
+                    ))}
+                </div>
+            </div>
         </section>
       )
 }
-
-export default Skills;

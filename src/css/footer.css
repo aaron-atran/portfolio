@@ -1,0 +1,27 @@
+/*Footer CSS*/
+.footer {
+  padding: 20px 0 50px 0;
+  overflow: hidden;
+  
+}
+
+.footer img {
+  width: 26%;
+}
+
+.footer p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #B8B8B8;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+}
+
+.fade-in {
+  animation: fadeInAnimation ease 1.3s;
+  
+}
+
+.slide-right {
+  animation: slideRightAnimation 1.1s linear forwards;
+}

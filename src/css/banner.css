@@ -1,0 +1,137 @@
+.banner {
+  margin-top: 0;
+  padding: 260px 0 100px 0;
+  background-image: var(--banner-img);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition-duration: 0.5s;
+}
+
+.banner:before, .banner:after {
+    top: 0;
+    position: absolute;
+    width: 70px;
+    height: 1000px;
+    content: "";
+    z-index: 2;
+}
+
+[data-theme="light"] .banner:before {
+    left: 0;
+    background: linear-gradient(to left , rgba(255, 255, 255, 0), #ffffff);
+}
+[data-theme="light"] .banner:after {
+    right: 0;
+    background: linear-gradient(to right , rgba(255, 255, 255, 0), #ffffff);
+}
+
+[data-theme="dark"] .banner:before {
+    left: 0;
+    background: linear-gradient(to left , rgba(0, 0, 0, 0), #121212);
+}
+
+[data-theme="dark"] .banner:after {
+    right: 0;
+    background: linear-gradient(to right , rgba(0, 0, 0, 0), #121212);
+}
+
+.banner .align-items-center {
+  z-index: 5;
+}
+
+.banner .tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  background: var(--banner-tag-gradience);
+  color: var(--banner-text);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.banner h1 {
+  font-size: 65px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+  color: var(--banner-heading);
+}
+
+.banner p {
+  color: var(--banner-text);
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+}
+
+.banner button {
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 60px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+}
+
+.banner button svg {
+  font-size: 25px;
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+  line-height: 1;
+}
+
+.banner button:hover svg {
+  margin-left: 25px;
+}
+
+.banner .avatar {
+  animation: updown 3s linear infinite;
+  z-index: 99;
+}
+
+.cloud-row {
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+#cloud1 {
+  top: 0;
+  animation: floatAcrossAnimation1 60s linear infinite;
+}
+
+#cloud2 {
+  top: 2%;
+  animation: floatAcrossAnimation2 60s linear infinite;
+}
+
+.cloud-col {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.cloud {
+  width: 280px;
+  height: auto;
+}
+
+[data-theme="dark"] .cloud {
+  opacity: 0.2;
+}
+
+.txt-rotate > .wrap {
+  border-right: 0.08em solid #666;
+}
