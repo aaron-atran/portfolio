@@ -1,4 +1,5 @@
 import { useGSAP } from "@gsap/react";
+import { Suspense } from "react";
 import gsap from "gsap";
 import TechIconCardExperience from "./Models/tech_logos/techIcons.jsx";
 import '../css/skill.css';
