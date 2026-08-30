@@ -3,8 +3,8 @@ nav.navbar {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 9999;
-  transition:  0.32s ease-in-out;
+  z-index: 999;
+  transition: 0.32s ease-in-out;
 }
 
 nav.navbar.scrolled {
@@ -12,6 +12,11 @@ nav.navbar.scrolled {
   background-color: var(--bg);
   color: var(--text-color);
 }
+
+nav.navbar.hide-nav {
+  transform: translateY(-100%);
+}
+
 
 nav.navbar a.navbar-brand {
     width: 9%;

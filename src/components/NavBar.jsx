@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import {Navbar, Container, Nav} from "react-bootstrap";
 import navIcon1 from '../assets/linkedin.png';
 import navIcon2 from '../assets/upwork.png';
@@ -15,22 +15,32 @@ import { ThemeContext } from '../util.js/ThemeContext.jsx'
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+    const [hideNav, setHideNav] = useState(false);
+
     const [expanded, setExpanded] = useState(false);
+    const lastScroll = useRef(0);
 
     const { theme, toggleTheme } = useContext(ThemeContext);
 
     useEffect(() => {
+        lastScroll.current = window.scrollY;
+
         const onScroll = () => {
-            if(window.scrollY > 50) {
-                setScrolled(true);
-            }
-            else {
-                setScrolled(false);
-             }
+            const currentScroll = window.scrollY;
+            setScrolled(currentScroll > 50);
+
+            if(currentScroll > lastScroll.current && currentScroll > 100) setHideNav(true);
+            else if (currentScroll < lastScroll.current) setHideNav(false);
+
+            lastScroll.current = currentScroll;
         }
 
-        window.addEventListener("scroll", onScroll);
-    }, [])
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, []);
 
     const onUpdateActiveLink = (value) => {
         setActiveLink(value);
@@ -38,7 +48,12 @@ export const NavBar = () => {
 
     return (
         <Router>
-        <Navbar expand="lg" expanded={expanded} onToggle={(isExpanded) => setExpanded(isExpanded)} className={scrolled ? "scrolled": ""}>
+        <Navbar  
+            expand="lg" 
+            expanded={expanded} 
+            onToggle={(isExpanded) => setExpanded(isExpanded)} 
+            className={`${scrolled ? "scrolled" : ""} ${hideNav ? "hide-nav" : ""}`}
+        >
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className={expanded ? "expanded" : ""} > 
                     <span className="navbar-toggler-icon"></span>

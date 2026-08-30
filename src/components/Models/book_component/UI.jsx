@@ -134,14 +134,24 @@ export const pages = [
 const ProjectLightbox = () => {
   const [selectedProject, setSelectedProject] = useAtom(selectedProjectAtom);
 
-  if (!selectedProject) return null;
+  if (!selectedProject) {
+    if (document.body.style.overflow === "hidden") {
+      document.body.style.overflow = "unset";
+      document.querySelector('nav.navbar').classList.remove("hide-nav");
+    }
+    else return null;
+  }
+  else {
+    document.body.style.overflow = 'hidden';
+    document.querySelector('nav.navbar').classList.add("hide-nav");
+  }
 
   return (
     <div
       className="
                 fixed
                 inset-0
-                z-[9999]
+                z-9999
                 flex
                 items-center
                 justify-center
@@ -166,7 +176,7 @@ const ProjectLightbox = () => {
                 "
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close */}
+
         <button
           onClick={() => setSelectedProject(null)}
           className="
@@ -189,14 +199,12 @@ const ProjectLightbox = () => {
           ×
         </button>
 
-        {/* Image */}
         <img
           src={`./textures/${selectedProject.image}.jpg`}
           alt={selectedProject.title}
           className="w-full rounded-xl object-cover"
         />
 
-        {/* Content */}
         <div className="project-lightbox">
           <h2 className="project-headtext font-bold">{selectedProject.title}</h2>
 
@@ -217,7 +225,6 @@ const ProjectLightbox = () => {
             </ul>
           )}
 
-          {/* Technologies */}
           <div
             className="
                         mt-3
@@ -242,7 +249,6 @@ const ProjectLightbox = () => {
             ))}
           </div>
 
-          {/* Testimonial */}
           {selectedProject.testimonial && (
             <div
               className="
@@ -259,7 +265,6 @@ const ProjectLightbox = () => {
             </div>
           )}
 
-          {/* Link */}
           {selectedProject.url && selectedProject.url !== "#" && (
             <a
               href={selectedProject.url}
@@ -306,7 +311,7 @@ export const UI = () => {
       >
         ›
       </button>
-      <main className="pointer-events-none select-none absolute inset-0 z-10 flex justify-between flex-col">
+      <main className="pointer-events-none select-none absolute inset-x-10 bottom-10 z-10 flex justify-between flex-col">
         <div className="w-full overflow-auto pointer-events-auto flex justify-center">
           <div className="overflow-auto flex items-center gap-4 max-w-full p-10">
             {[...pages].map((_, index) => (
