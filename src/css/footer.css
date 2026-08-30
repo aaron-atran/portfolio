@@ -2,11 +2,20 @@
 .footer {
   padding: 20px 0 50px 0;
   overflow: hidden;
-  
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
 }
 
 .footer img {
-  width: 26%;
+  width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer img {
+    margin: auto;
+  }
 }
 
 .footer p {

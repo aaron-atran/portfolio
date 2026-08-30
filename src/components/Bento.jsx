@@ -26,30 +26,50 @@ export const Bento = () => {
         { lat: 30.7749, lng: -95.4194, size: 0.5,  name: 'Texas' }
     ];
 
-    const globeRef = useRef();;
+    const [isInView, setIsInView] = useState(false);
+    const globeRef = useRef();
+    const globeContainerRef = useRef();
+    
     const theme = useContext(ThemeContext);
     let [globeTexture, setGlobeTexture] = useState('//unpkg.com/three-globe/example/img/earth-night.jpg');
 
     useEffect(() => {
-        if(globeRef.current) {
-            globeRef.current.controls().autoRotate = true;
-            globeRef.current.controls().autoRotateSpeed = 1.2;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsInView(entry.isIntersecting);
+            },
+            {
+                threshold: 0.2,
+            }
+        );
+
+        if (globeContainerRef.current) observer.observe(globeContainerRef.current);
+        return () => {
+            if (globeContainerRef.current) observer.unobserve(globeContainerRef.current);
         }
+    }, []);
+
+    useEffect(() => {
+        if (!globeRef.current) return;
+
+        const controls = globeRef.current.controls();
+        controls.autoRotate = isInView;
+        controls.autoRotateSpeed = 1.2;
+
+    }, [isInView]);
+
+    useEffect(() => {
         if (theme.theme === 'light') setGlobeTexture(LIGHT_GLOBE);
         else setGlobeTexture(DARK_GLOBE)
 
     }, [theme]);
 
     const handleHoverIn = () => {
-        if (globeRef.current) {
-            globeRef.current.controls().autoRotate = false;
-        }
+        if (globeRef.current) globeRef.current.controls().autoRotate = false;
     };
 
     const handleHoverOut = () => {
-        if (globeRef.current) {
-        globeRef.current.controls().autoRotate = true;
-        }
+        if (globeRef.current) globeRef.current.controls().autoRotate = isInView;
     };
 
     return (
@@ -79,7 +99,7 @@ export const Bento = () => {
                 </div>
                 <div className="col-span-1 xl:row-span-4">
                     <div className="grid-container">
-                        <div className="rounded-3xl w-full sm:h[326px] h-fit justify-center items-center">
+                        <div ref={globeContainerRef} className="rounded-3xl w-full sm:h-115.5 h-fit justify-center items-center">
                             <Globe 
                                 className="bento-globe"
                                 ref={globeRef}

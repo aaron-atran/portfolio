@@ -1,10 +1,13 @@
 import { useGSAP } from "@gsap/react";
-import { Suspense } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import TechIconCardExperience from "./Models/tech_logos/techIcons.jsx";
 import '../css/skill.css';
 
 export const Skills = () => {
+    const [isInView, setIsInView] = useState(false);
+    const skillsRef = useRef(null);
+
     const icons = [
         { name: "HTML", modelPath: "./html5_logo.glb", scale: 0.8, rotation: [0, -Math.PI / 4, 0], },
         { name: "CSS", modelPath: "./modern_3d_css_logo.glb", scale: 35, rotation: [0, 0, 0], },
@@ -12,6 +15,20 @@ export const Skills = () => {
         { name: "React", modelPath: "./react_logo-transformed.glb", scale: 1, rotation: [0, 0, 0] },
         { name: "Node.js", modelPath: "./node-transformed.glb", scale: 5, rotation: [0, -Math.PI / 2, 0] }
     ];
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsInView(entry.isIntersecting)
+            },
+            {
+                threshold: 0.1
+            }
+        );
+
+        if (skillsRef.current) observer.observe(skillsRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     useGSAP(() => {
         gsap.fromTo(
@@ -35,7 +52,7 @@ export const Skills = () => {
     });
 
       return (
-        <section className="flex-center section-padding" id="skills">
+        <section ref={skillsRef} className="skill flex-center section-padding" id="skills">
             <div className="w-full h-full md:px-10 px-5">
                 <div>
                     <h2>My Tech Stack</h2>
@@ -47,7 +64,7 @@ export const Skills = () => {
                             <div className="tech-card-animated-bg" />
                             <div className="tech-card-content">
                                 <div className="tech-icon-wrapper">
-                                    <TechIconCardExperience icons={icon} />
+                                    <TechIconCardExperience icons={icon} isInView={isInView} />
                                 </div>
                                 <div className="padding-x w-full">
                                     <p>{icon.name}</p>

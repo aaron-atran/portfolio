@@ -3,10 +3,12 @@ import { Canvas } from "@react-three/fiber";
 import { useEffect } from "react";
 import * as THREE from "three";
 
-const TechIconCardExperience = ({ icons }) => {
+const TechIconCardExperience = ({ icons, isInView }) => {
   const scene = useGLTF(icons.modelPath);
 
   useEffect(() => {
+    if (!isInView) return;
+
     if (icons.name === "Interactive Developer") {
       scene.scene.traverse((child) => {
         if (child.isMesh) {
@@ -19,7 +21,7 @@ const TechIconCardExperience = ({ icons }) => {
   }, [scene]);
 
   return (
-    <Canvas>
+    <Canvas frameloop={isInView ? "always" : "never"}>
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <spotLight

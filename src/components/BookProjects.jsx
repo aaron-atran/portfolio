@@ -1,4 +1,4 @@
-import { Loader } from "@react-three/drei";
+import { Loader, useProgress } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
 import { Experience } from "./Models/book_component/Experience.jsx";
@@ -8,10 +8,30 @@ import '../css/project.css';
 export const BookProjects = () => {
   const [canvasActive, setCanvasActive] = useState(false);
 
+  const LoadingScreen = () => {
+    const { progress, active } = useProgress();
+
+    if (!active) return null;
+
+    return (
+      <div className="absolute inset-0 z-[200] flex items-center justify-center bg-black">
+        <div className="text-center text-white">
+          <div className="mb-4 text-4xl font-bold">
+            {Math.round(progress)}%
+          </div>
+
+          <div className="text-lg">
+            Loading projects...
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section
       id="projects"
-      className="relative h-screen w-full mx-auto overflow-hidden"
+      className="project relative h-screen w-full mx-auto overflow-hidden"
     >
       {canvasActive ? (
         <>
@@ -52,7 +72,6 @@ export const BookProjects = () => {
             ×
           </button>
           <UI />
-          <Loader />
         </>
       ) : (
         <button
@@ -62,7 +81,9 @@ export const BookProjects = () => {
             Explore Projects
           </span>
         </button>
+        
       )}
+      <LoadingScreen />
     </section>
   );
 };

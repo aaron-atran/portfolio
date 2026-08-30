@@ -19,8 +19,8 @@ export const Footer = () => {
     <footer className="footer">
       <Container>
         <Row className="align-items-center">
-        <Col size={12} sm={6}>
-            <img ref={ref} className={`${animate ? "slide-right" : "" }` } src={logo} alt="Logo" />
+          <Col className="align-items-center flex-col border-white-600" size={12} sm={6}>
+            <img src={logo} alt="Logo" />
           </Col>
           <Col size={12} sm={6} className="text-center text-sm-end">
             <div className="social-icon">
