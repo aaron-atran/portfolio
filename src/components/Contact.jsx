@@ -3,7 +3,7 @@ import { ThemeContext } from '../util.js/ThemeContext.jsx';
 import { Container, Row, Col } from "react-bootstrap";
 import { ScrollTransition } from '../util.js/ScrollTransition';
 import emailjs from '@emailjs/browser';
-import '../css/contact.css';
+import "../css/contact.css";
 
 export const Contact = () => {
     const { theme } = useContext(ThemeContext);
@@ -35,15 +35,25 @@ export const Contact = () => {
             <Container className='contact-content'>
                 <Row className={`align-items-center-contact ${animate ? "fade-in" : "" } `}>
                     <Col md={6}>
-                        <h2>Get In Touch</h2>
-                        <div id="contact">
-                            <span className="contactDesc">Please fill out the form below to discuss my work opportunities</span>
-                            <form className="contactForm" ref={form} onSubmit={sendEmail}>
-                                <input type="text" className="name" placeholder="Name" name="your_name"/>
-                                <input type="email" className="name" placeholder="Email" name="your_email"/>
-                                <textarea className="msg" name="message" row="5" placeholder="Message Here"/>
-                                <button type="submit" value="send" className="submitBtn">Submit</button>
-                            </form>
+                        <div className="contact-container">
+                            <div className="front side">
+                                <div className="card-content">
+                                    <h1>Interesting in Contacting Me?</h1>
+                                    <p>Submit a form and I will get back to you as soon as possible about potential job opportunities!
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="back side">
+                                <div className="card-content">
+                                    <h1>Contact Me</h1>
+                                    <form className="contact-form" ref={form} onSubmit={sendEmail}>
+                                        <input type="text" className="name" placeholder="Name" name="your_name"/>
+                                        <input type="email" className="name" placeholder="Email" name="your_email"/>
+                                        <textarea className="msg" name="message" row="5" placeholder="Message Here"/>
+                                        <button type="submit" value="send" className="submitBtn">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </Col>
                 </Row>

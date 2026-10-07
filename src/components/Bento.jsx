@@ -98,7 +98,7 @@ export const Bento = () => {
                     </div>
                 </div>
                 <div className="col-span-1 xl:row-span-4">
-                    <div className="grid-container">
+                    <div className="grid-container gap-96">
                         <div ref={globeContainerRef} className="rounded-3xl w-full sm:h-115.5 h-fit justify-center items-center">
                             <Globe 
                                 className="bento-globe"
@@ -123,7 +123,7 @@ export const Bento = () => {
                                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
                             />
                         </div>
-                        <div>
+                        <div className="z-1">
                             <p className="grid-headtext">Working With Most Time Zones</p>
                             <p className="grid-subtext">I'm based in Minnesota, and available to work with people remotely.</p>
                         </div>
@@ -133,8 +133,8 @@ export const Bento = () => {
                     <div className="grid-container">
                         <img src={gridImage3} alt="grid 3" className="w-full sm:h-66.5 h-fit object-contain" />
                         <div>
-                            <p className="grid-headtext">Improving Myself</p>
-                            <p className="grid-subtext">When I'm not working, I am actively trying to improve myself, polish my skills, and stay up to date with modern practices.</p>
+                            <p className="grid-headtext">Education</p>
+                            <p className="grid-subtext">I graduated in 2022 at the University of Minnesota and earned a Bachelor's Degree in Computer Science and Comparative Literature. When I'm not working, I am actively trying to improve myself, polish my skills, and stay up to date with modern practices.</p>
                         </div>
                     </div>  
                 </div>

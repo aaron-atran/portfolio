@@ -311,7 +311,7 @@ export const UI = () => {
       >
         ›
       </button>
-      <main className="pointer-events-none select-none absolute inset-x-10 bottom-10 z-10 flex justify-between flex-col">
+      <main className="pointer-events-none select-none absolute inset-x-10 top-10 z-10 flex justify-between flex-col">
         <div className="w-full overflow-auto pointer-events-auto flex justify-center">
           <div className="overflow-auto flex items-center gap-4 max-w-full p-10">
             {[...pages].map((_, index) => (

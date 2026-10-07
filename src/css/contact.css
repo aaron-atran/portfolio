@@ -1,18 +1,18 @@
-/*Contact Form CSS*/
+body[data-theme='light'] {
+  --contact-card-front-bg: url("../assets/day-mountain.jpg");
+  --contact-card-back-bg: url("../assets/mountains-background.png");
+}
+
+body[data-theme='dark'] {
+  --contact-card-front-bg: url("../assets/mountains-background.png");
+  --contact-card-back-bg: url("../assets/day-mountain.jpg");
+}
+
 .align-items-center-contact {
   padding-top: 4rem;
   justify-content: center;
   text-align: center;
 }
-
-/* .contact {
-  padding: 60px 0 100px 0;
-  background-image: var(--contact-bg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: repeat;
-  transition-duration: 3s;
-} */
 
 .contact {
   position: relative;
@@ -84,13 +84,73 @@
   transition: color 0.5s ease;
 }
 
-.contactDesc {
-  padding: 1rem;
-  font-size: medium;
-  font-weight: 300;
+.contact-container {
+	min-width: 700px;
+	min-height: 450px;
+	border-radius: 20px;
+	position: relative;
+	-webkit-transition: 1.5s ease-in-out;
+	transition: 1.5s ease-in-out;
+	transform-style: preserve-3d;
 }
 
-.contactForm {
+.side {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	padding: 20px 50px;
+	color: #fff;
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+	border-radius: 20px;
+}
+
+.card-content {
+	transform: translatez(70px) scale(0.8);
+	line-height: 1.5em;
+  height: 100%;
+  color: var(--text-color);
+}
+.card-content h1 {
+	position: relative;
+}
+.card-content p {
+	margin-top: 50px;
+	line-height: 2em;
+}
+.card-content h1:before {
+	content: "";
+	position: absolute;
+	bottom: -20px;
+	height: 3px;
+	background-color: var(--text-color);
+	width: 70px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.front {
+	z-index: 2;
+	background-size: 100vh;
+	background: var(--contact-card-front-bg) no-repeat center / cover;
+  transition: 1s;
+}
+.back {
+	background-color: #333;
+	transform: rotateY(180deg);
+	z-index: 0;
+	padding-top: 10px;
+	background-image: linear-gradient(rgba(119, 119, 119, 0.6), rgba(0, 0, 0, 0.6)), var(--contact-card-back-bg);
+  background-size: cover;
+  background-position: center;
+
+}
+.contact-container:hover {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+.contact-form {
   margin: 1rem;
   display: flex;
   flex-direction: column;
@@ -100,7 +160,7 @@
   width: 100%;
 }
 
-.contactForm button {
+.contact-form button {
   font-weight: 700;
   color: #fff;
   border: 1px solid #fff;
@@ -112,17 +172,17 @@
 	transition: 0.3s ease-in-out;
 }
 
-.contactForm input, .contactForm textarea {
+.contact-form input, .contact-form textarea {
   border: 1px solid #fff;
   background-color: transparent;
 }
 
-.contactForm button:hover {
+.contact-form button:hover {
   color: black;
   background-color: white;
 }
 
-.contactForm button:hover::before {
+.contact-form button:hover::before {
 	content: "";
 	width: 100%;
 	height: 100%;
@@ -139,10 +199,6 @@
   border: none;
   border-radius: 0.5rem;
   background: rgb(40, 40, 40);;
-}
-
-.msg {
-  height: 12rem;
 }
 
 .submitBtn {

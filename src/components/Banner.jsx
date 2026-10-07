@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import headerImg from '../assets/Cute Avatar.png'
-import cloudImg from '../assets/cloud3.png';
 import '../css/banner.css';
 
 export const Banner = () => {

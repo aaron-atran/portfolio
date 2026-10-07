@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import TechIconCardExperience from "./Models/tech_logos/techIcons.jsx";
+import TechIconCardExperience from "./Models/skill_component/techIcons.jsx";
 import '../css/skill.css';
 
 export const Skills = () => {
